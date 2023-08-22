@@ -1,22 +1,20 @@
 #include "main.h"
-
 /**
- * _printf: our version of printf to print data of all formats
- * @format: input string
- * @c: character wanting to print
- * string: used to print strings
- * @char_print: used to print characters
- * @print_string: used to print strings
- *
- * return: number of characters returned
+ * print_char - prints a single character
+ * @c: the character to be printed
+ * @char_print: pointer to the counter for printed characters
  */
-
 void print_char(char c, int *char_print)
 {
 	write(1, &c, 1);
 	(*char_print)++;
 }
 
+/**
+ * print_string - Prints a string and updates char_print counter
+ * @str: The string to be printed
+ * @char_print: Pointer to the counter for printed characters
+ */
 void print_string(char *str, int *char_print)
 {
 	int len_str = 0;
@@ -27,6 +25,12 @@ void print_string(char *str, int *char_print)
 	(*char_print) += len_str;
 }
 
+/**
+ * _printf - our version of printf to print data of all formats
+ * @format: Input string
+ * @...: Variadic arguments
+ * Return: Number of characters printed
+ */
 int _printf(const char *format, ...)
 {
 	int char_print = 0;
@@ -50,7 +54,7 @@ int _printf(const char *format, ...)
 				break;
 			if (*format == '%')
 			{
-				print_char(*format, &char_print);
+				print_char('&', &char_print);
 			}
 			else if (*format == 'c')
 			{
@@ -63,6 +67,10 @@ int _printf(const char *format, ...)
 				char *str = va_arg(list_args, char*);
 
 				print_string(str, &char_print);
+			}
+			else if (*format == 'r')
+			{
+				print_string("%r", &char_print);
 			}
 		}
 		format++;
