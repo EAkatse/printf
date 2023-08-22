@@ -68,10 +68,6 @@ int _printf(const char *format, ...)
 
 				print_string(str, &char_print);
 			}
-			else if (*format == 'r')
-			{
-				print_string("%r", &char_print);
-			}
 		}
 		format++;
 	}
