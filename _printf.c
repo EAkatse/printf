@@ -33,44 +33,37 @@ void print_string(char *str, int *char_print)
  */
 int _printf(const char *format, ...)
 {
-	int char_print = 0;
-	va_list list_args;
-
 	if (format == NULL)
 	{
 		return (-1);
 	}
+	int char_print = 0;
+	va_list list_args;
+
 	va_start(list_args, format);
 	while (*format)
-	{
 		if (*format != '%')
-		{
 			print_char(*format, &char_print);
-		}
 		else
-		{
 			format++;
 			if (*format == '\0')
-				break;
+				return (1);
+			if (*format == ' ')
+				if ((*format + 1) == '\0')
+					return (-1);
 			if (*format == '%')
-			{
-				print_char('&', &char_print);
-			}
+				print_char('%', &char_print);
 			else if (*format == 'c')
-			{
 				char c = va_arg(list_args, int);
 
 				print_char(c, &char_print);
-			}
 			else if (*format == 's')
-			{
 				char *str = va_arg(list_args, char*);
 
+				if (str == NULL)
+					str = "(null)";
 				print_string(str, &char_print);
-			}
-		}
 		format++;
-	}
 	va_end(list_args);
 	return (char_print);
 }
