@@ -42,28 +42,42 @@ int _printf(const char *format, ...)
 
 	va_start(list_args, format);
 	while (*format)
+	{
 		if (*format != '%')
+		{
 			print_char(*format, &char_print);
+		}
 		else
+		{
 			format++;
 			if (*format == '\0')
 				return (1);
 			if (*format == ' ')
+			{
 				if ((*format + 1) == '\0')
 					return (-1);
+			}
 			if (*format == '%')
+			{
 				print_char('%', &char_print);
+			}
 			else if (*format == 'c')
+			{
 				char c = va_arg(list_args, int);
 
 				print_char(c, &char_print);
+			}
 			else if (*format == 's')
+			{
 				char *str = va_arg(list_args, char*);
 
 				if (str == NULL)
 					str = "(null)";
 				print_string(str, &char_print);
+			}
+		}
 		format++;
+	}
 	va_end(list_args);
 	return (char_print);
 }
