@@ -1,8 +1,9 @@
 #include "main.h"
-/*
- * _printf - prints to stout
+/**
+ * _printf - printf replica to display data
  * @format: format specifier
- * return: number of bytes printed
+ * @...: for variadic functions
+ * Return: number of bytes printed
  */
 int _printf(const char *format, ...)
 {
