@@ -6,6 +6,7 @@
 #include <stdlib.h>
 
 int chars(char c);
+int putsss(char *c);
 int _printf(const char *format, ...);
 
 #endif
