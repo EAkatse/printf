@@ -24,9 +24,10 @@ int _printf(const char *format, ...)
 		if (format[i] == '%' && format[i + 1] == 'c')
 		{
 			chars(va_arg(list_args, int));
+			i++;
 		}
 		count += 1;
 	}
-
+	va_end(list_args);
 	return (count);
 }
