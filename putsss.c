@@ -1,8 +1,8 @@
 #include "main.h"
-/*
+/**
  * putsss - prints string
  * @c: string
- * return: number of bytes
+ * Return: number of bytes
  */
 int putsss(char *c)
 {
