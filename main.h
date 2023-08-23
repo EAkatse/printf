@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+int chars(char c);
 int _printf(const char *format, ...);
 
 #endif
